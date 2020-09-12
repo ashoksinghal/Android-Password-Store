@@ -21,6 +21,7 @@ import com.zeapo.pwdstore.R
 import com.zeapo.pwdstore.UserPreference
 import com.zeapo.pwdstore.databinding.FragmentRepoLocationBinding
 import com.zeapo.pwdstore.utils.PasswordRepository
+import com.zeapo.pwdstore.utils.PasswordSortOrder
 import com.zeapo.pwdstore.utils.PreferenceKeys
 import com.zeapo.pwdstore.utils.finish
 import com.zeapo.pwdstore.utils.getString
@@ -34,8 +35,8 @@ class RepoLocationFragment : Fragment(R.layout.fragment_repo_location) {
 
     private val settings by lazy { requireActivity().applicationContext.sharedPrefs }
     private val binding by viewBinding(FragmentRepoLocationBinding::bind)
-    private val sortOrder: PasswordRepository.PasswordSortOrder
-        get() = PasswordRepository.PasswordSortOrder.getSortOrder(settings)
+    private val sortOrder: PasswordSortOrder
+        get() = PasswordSortOrder.getSortOrder(settings)
 
     private val repositoryInitAction = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == AppCompatActivity.RESULT_OK) {
